@@ -37,8 +37,10 @@ const appointments = [
   },
 ];
 
+
 export default function Application(props) {
   const [days, setDay] = useState([]);
+  //useEffect loads sidebar for /api/days
   useEffect(() => {
     axios.get(`http://localhost:8001/api/days`)
       .then((response) => {
