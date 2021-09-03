@@ -1,11 +1,7 @@
 import React from "react";
-import classnames from "classnames"
 import "components/Appointment/styles.scss";
 
 export default function Show(props) {
-  const headerClass = classnames("appointment"
-  );
-
   return (
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
