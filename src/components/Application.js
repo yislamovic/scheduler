@@ -91,12 +91,33 @@ export default function Application(props) {
       });
     }));
   }
+  function editInterview(id, interview){
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    
+    return (axios.put(`http://localhost:8001/api/appointments/${id}`, {interview})
+    .then(() =>{
+      setState({
+        ...state,
+        appointments
+      });
+    }));
+  }
   //const interviewersForDay = getInterviewersForDay(state, state.day);
   dailyAppointments = getAppointmentsForDay(state, state.day);
+
   const timeSlots = Object.values(dailyAppointments).map(slot => {
+
     const interview = getInterview(state, slot.interview);
     const interviewersForDay = getInterviewersForDay(state, state.day);
     console.log(slot);
+
     return (
       <Appointment
         key={slot.id}
@@ -105,6 +126,7 @@ export default function Application(props) {
         interviewers={interviewersForDay}
         bookInterview={bookInterview}
         cancelInterview={cancelInterview}
+        editInterview={editInterview}
       />
     );
   });
