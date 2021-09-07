@@ -3,7 +3,7 @@ import classnames from "classnames"
 import Button from "components/Button";
 import "components/Appointment/styles.scss";
 
-export default function Confirm(props) {
+export default function Status(props) {
   const headerClass = classnames("appointment"
   );
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "components/Appointment/styles.scss";
 
-export default function Header(props) {
+export default function Empty(props) {
   return (
     <main className="appointment__add">
       <img
