@@ -22,6 +22,7 @@ export default function Form(props) {
           onSubmit={event => event.preventDefault()}
         >
           <input
+            data-testid="student-name-input"
             className="appointment__create-input text--semi-bold"
             name="name"
             type="text"
