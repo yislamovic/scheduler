@@ -10,6 +10,7 @@ import Error from "./Error";
 import useVisualMode from "../hooks/useVisualMode"
 import Header from "./Header";
 
+//all the modes for useVisualMode custom hook
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -20,30 +21,34 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 export default function Appointment(props) {
-
     const appointmentClass = classnames("appointment"
     );
+    //custom hook that manages state
     const { mode, transition, back } = useVisualMode(
         props.interview ? SHOW : EMPTY
     );
-    
+
     function save(name, interviewer) {
+        //obj that will contain the information recieved from form component
         const interview = {
             student: name,
             interviewer
         };
+        //transitions to the saving animation
         transition(SAVING, true)
+        //calls bookinterview and transitions to the show component
         props.bookInterview(props.id, interview)
             .then(() => {
                 transition(SHOW);
-                
             })
             .catch(err => {
                 transition(ERROR_SAVE, true)
             })
 
     }
+    //delete function..
     function deleteInterview() {
+        //transitions to deleting animation; replaces previous state with current one
         transition(DELETING, true)
         props.cancelInterview(props.id)
             .then(() => {
@@ -53,12 +58,7 @@ export default function Appointment(props) {
                 transition(ERROR_DELETE, true)
             })
     }
-    function confirmDelete() {
-        transition(CONFIRM)
-    }
-    function transitionEdit() {
-        transition(EDIT)
-    }
+    //function that edits the current interview
     function changeInterview(name, interviewer) {
         const interview = {
             student: name,
@@ -73,7 +73,15 @@ export default function Appointment(props) {
                 transition(ERROR_SAVE, true)
             })
     }
-    console.log(props.interview)
+
+    //functions that handle the transitions for confirm and edit
+    function confirmDelete() {
+        transition(CONFIRM)
+    }
+    function transitionEdit() {
+        transition(EDIT)
+    }
+    //renders appointment and its components according to the mode state
     return (
         <article className={appointmentClass}>
             <Header time={props.time}></Header>

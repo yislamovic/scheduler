@@ -1,25 +1,28 @@
 export function getAppointmentsForDay(state, day) {
+  //checks for undefined values
   const check = typeof state.days;
   const check2 = typeof state.appointments
   const results = [];
   if (check !== "undefined" && check2 !== "undefined") {
+    //gets values of objects
     const days = Object.values(state.days)
     const appointments = Object.values(state.appointments)
     const appointmentsID = [];
 
+    //finds the day; pushes id into array
     for (const d of days) {
       if (day === d.name) {
         appointmentsID.push(d.appointments)
       }
     }
 
+    //finds the ID nad pushed appointment to results
     if (appointmentsID[0]) {
       for (const id of appointmentsID[0]) {
         for (const app of appointments) {
           if (id === app.id) {
             results.push(app)
           }
-
         }
       }
     }
@@ -28,35 +31,23 @@ export function getAppointmentsForDay(state, day) {
 }
 
 export function getInterview(state, interview) {
-  // let results = null;
-  // if (interview !== null) {
-  //   for (const info in state.interviewers) {
-  //     if (state.interviewers[info].id === interview.interviewer) {
-  //       return results = { student: interview.student, interviewer: state.interviewers[info] }
-  //     }
-  //   }
-  // }
-  // return results
+  //checks if interview exists
   if (!interview) {
     return null
   }
-
-  console.log(state)
+ 
+  //adds the interviewer and student object into new obj 
   let results = null;
-  console.log(interview, "this is interwiew")
-
   const interviewerObj = {};
   const interviewerID = interview.interviewer;
-
   interviewerObj.student = interview.student;
   interviewerObj.interviewer = state.interviewers[interviewerID];
   results = interviewerObj;
 
-  console.log(results, "this is results")
-
   return results;
 }
 
+//gets interviewers for day; similar code get appointments for day
 export function getInterviewersForDay(state, day) {
   const check = typeof state.days;
   const check2 = typeof state.interviewers
@@ -78,7 +69,6 @@ export function getInterviewersForDay(state, day) {
           if (id === inter.id) {
             results.push(inter)
           }
-
         }
       }
     }

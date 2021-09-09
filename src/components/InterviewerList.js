@@ -4,10 +4,9 @@ import InterviewerListItem from "./InterviewerListItem";
 import PropTypes from 'prop-types';
 export default function InterviewerList(props, id) {
 
+  //maps through interviewers and renders them to InterviewListItem Component
   const interviewers = props.interviewers && props.interviewers.map(interviewer => {
-
     return (
-
       <InterviewerListItem
         key={interviewer.id}
         id={interviewer.id}

@@ -7,6 +7,7 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "help
 import useApplicationData from "./hooks/useApplicationData"
 
 export default function Application(props) {
+  //state and functions from useApplicationData
   const {
     state,
     setDay,
@@ -15,9 +16,13 @@ export default function Application(props) {
     editInterview
   } = useApplicationData();
 
+  //call interviewersForDay from helpers; gets all the interviewer data for that day
   const interviewersForDay = getInterviewersForDay(state, state.day);
+
+  //calls getAppointmentForDay and maps through the values of appointment
   const timeSlots = Object.values(getAppointmentsForDay(state, state.day)).map(slot => {
-    console.log(slot.time)
+
+    //returns a unique Appointment components with props
     return (
       <Appointment
         key={slot.id}
@@ -31,6 +36,7 @@ export default function Application(props) {
     );
   });
 
+  //renders DayList and Appointment components
   return (
     <main className="layout">
       <section className="sidebar">
