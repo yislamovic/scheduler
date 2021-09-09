@@ -1,11 +1,7 @@
 import React from "react";
-import classnames from "classnames"
 import "components/Appointment/styles.scss";
 
 export default function Error(props) {
-  const headerClass = classnames("appointment"
-  );
-
   return (
     <main className="appointment__card appointment__card--error">
       <section className="appointment__error-message">

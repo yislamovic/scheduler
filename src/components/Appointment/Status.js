@@ -1,11 +1,7 @@
 import React from "react";
-import classnames from "classnames"
-import Button from "components/Button";
 import "components/Appointment/styles.scss";
 
 export default function Status(props) {
-  const headerClass = classnames("appointment"
-  );
 
   return (
     <main className="appointment__card appointment__card--status">
