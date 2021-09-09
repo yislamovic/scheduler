@@ -19,6 +19,7 @@ export default function Application(props) {
 
   const interviewersForDay = getInterviewersForDay(state, state.day);
   const timeSlots = Object.values(getAppointmentsForDay(state, state.day)).map(slot => {
+    console.log(slot.time)
     return (
       <Appointment
         key={slot.id}

@@ -8,7 +8,7 @@ import Form from "./Form"
 import Confirm from "./Confirm";
 import Error from "./Error";
 import useVisualMode from "../hooks/useVisualMode"
-import axios from "axios";
+import Header from "./Header";
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -76,6 +76,7 @@ export default function Appointment(props) {
     console.log(props.interview)
     return (
         <article className={appointmentClass}>
+            <Header time={props.time}></Header>
             {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
             {mode === SHOW && (
                 <Show
