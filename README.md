@@ -29,8 +29,8 @@ npm run storybook
 - react-scripts: 3.0.0
 
 ## Final Product
-![Shows the app in view](docs/view.png)
+![Shows the app in view](https://github.com/yislamovic/scheduler/blob/master/docs/view.png)
 
-![Shows the app creating interview](docs/create.png)
+![Shows the app creating interview](https://github.com/yislamovic/scheduler/blob/master/docs/create.png)
 
-![Shows the app after adding interview](docs/final.png)
+![Shows the app after adding interview](https://github.com/yislamovic/scheduler/blob/master/docs/final.png)
