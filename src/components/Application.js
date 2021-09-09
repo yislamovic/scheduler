@@ -1,12 +1,12 @@
-import "./Application.scss";
+
+import "components/Application.scss";
 import DayList from "components/DayList"
 import React from "react";
-import {Appointment} from "../components/Appointment/index";
+import Appointment from "components/Appointment/index";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors"
 import useApplicationData from "./hooks/useApplicationData"
 
 export default function Application(props) {
-  //states and functions from custom hook
   const {
     state,
     setDay,
@@ -15,11 +15,9 @@ export default function Application(props) {
     editInterview
   } = useApplicationData();
 
-  //functions from /helpers
-  //gets interviews for the day currently set in state
   const interviewersForDay = getInterviewersForDay(state, state.day);
   const timeSlots = Object.values(getAppointmentsForDay(state, state.day)).map(slot => {
-    //creates each appointment component and renders it
+    console.log(slot.time)
     return (
       <Appointment
         key={slot.id}
@@ -32,7 +30,7 @@ export default function Application(props) {
       />
     );
   });
-  //renders the DayList and Appointment components
+
   return (
     <main className="layout">
       <section className="sidebar">

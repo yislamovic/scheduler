@@ -2,21 +2,19 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 export default function useApplicationData() {
-  //this is the useState object for day, days, appointments and interviewers
+  //useState that manages data
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {},
     interviewers: {}
   });
-  
-  //this function sets the day using setState
+  //function to set the day
   const setDay = day => setState({ ...state, day });
-  //useEffect handles changes in the while rendering
   useEffect(() => {
     const getData = async () => {
       try {
-        //axios requests for days, appointments, and interviewers from sheduler-api
+        //promise for all get requests wrapped in a try/Catch
         const [days, appointments, interviewers] = await Promise.all([
           axios.get(`http://localhost:8001/api/days`).then((response) => {
             return response.data
@@ -28,7 +26,7 @@ export default function useApplicationData() {
             return response.data
           })
         ]);
-        //setState with the data from the axios requests
+        //setState with the retrieved data from axios
         setState(prev => ({ ...prev, days, appointments, interviewers }))
       } catch (err) {
         console.log(err)
@@ -36,51 +34,48 @@ export default function useApplicationData() {
     }
     getData();
   }, []);
-  //this function is responisble for updating the spots count
-  function updateSpots(state, appointments){
-    //find the data based on the state.day data
+
+  function updateSpots(state, appointments) {
     const dayObj = state.days.find(day => day.name === state.day);
 
-    //this counts the null apointments within the dayObj
     let spots = 0;
-    for (const id of dayObj.appointments){
+    //counts all the null interview spots
+    for (const id of dayObj.appointments) {
       const appointment = appointments[id];
-      if(!appointment.interview){
+      if (!appointment.interview) {
         spots++
       }
     }
-    //take the day obj and spread it; update it with the new spots count
-    const day = {...dayObj, spots}
-    //this returns the updated day object 
+    //places updated spots values in object
+    const day = { ...dayObj, spots }
     const days = state.days.map(obj => obj.name === state.day ? day : obj)
     return days;
   }
-  //function that books the interview 
+
   function bookInterview(id, interview) {
-    //create a new appointment object that spreads the state
+    //spread state and add the interview in obj
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    //add appointment and spreads state
+    //add new obj to appointments 
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
-    //calls updateSpots and returns with a put request; updating the server
     const days = updateSpots(state, appointments);
     return (axios.put(`http://localhost:8001/api/appointments/${id}`, {
       interview
     })
-    .then(() => {
-      //updated the setState with the fresh data
-      setState({
-        ...state,
-        appointments, days
-      });
-    }))
+      //when the put request is succesful; update appointments and spots with setState
+      .then(() => {
+        setState({
+          ...state,
+          appointments, days
+        });
+      }))
   }
-  //function that cancels the interview
+  //cancels interview.. similar code as before
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],
@@ -90,8 +85,8 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-    //calls updateSpots and returns with delete record in server
     const days = updateSpots(state, appointments);
+    //delete request instead of put..
     return (axios.delete(`http://localhost:8001/api/appointments/${id}`)
       .then(() => {
         setState({
@@ -100,7 +95,7 @@ export default function useApplicationData() {
         });
       }));
   }
-  //this is similar to bookInterview but this only changes records in server
+  //edits the interviews in server
   function editInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -110,7 +105,7 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-
+    //put request to change data in server
     return (axios.put(`http://localhost:8001/api/appointments/${id}`, { interview })
       .then(() => {
         setState({
@@ -119,8 +114,7 @@ export default function useApplicationData() {
         });
       }));
   }
-  //returns all the functions 
-  return {
+  return { //returns all the functions
     state, setDay, bookInterview, cancelInterview
     , editInterview
   }

@@ -1,38 +1,33 @@
 import { useState } from "react";
-
-//custom hook that allows us to transition modes and setHistory
+//custom hook that handles transitions between modes
 export default function useVisualMode(initial) {
-  //state mode and history
+  //setStates for mode and history
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
-  //transition function that takes in state/mode and defualt replace argument
   function transition(state, replace = false) {
     if (!replace) {
-      //set the mode to the current state
+      //sets mode to transition to state
       setMode(() => state);
-      //update the history
+      //sets the history
       setHistory((prev) => [...prev, state]);
     }
     //if replace is true..
     else{
-      //set the history; change the previous mode and replace it with the current mode
+      //replace the current mode in history and replace it with new mode
       setHistory((prev) => [...prev.slice(0, history.length - 1), state]);
-      //set the mode to current state
       setMode(() => state);
     }
   }
-  //function that transtions to the previous state
   function back() {
-    //checks to see if the history has more than one mode
+    //check to see if there are at least more than one items in history to move back to
     if (history.length > 1) {
-      //set the mode to its previous value
+      //sets mode with previous state/mode from history
       setMode(() => {
         return history[history.length - 2];
       });
-      //change the history accordingly
+      //sets the new history
       setHistory((prev) => [...prev.slice(0, history.length - 1)]);
     }
   }
-  //return the functions
   return { mode, transition, back };
 }

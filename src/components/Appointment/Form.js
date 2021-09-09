@@ -5,30 +5,26 @@ import { useState } from 'react'
 import "components/Appointment/styles.scss";
 
 export default function Form(props) {
-  //set states for the defualt values of name, inteviewer and error
   const [name, setName] = useState(props.name || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
-  //resets the fields and set interviewer to null
   const reset = () => {
     setName("");
     setInterviewer(null);
   };
-  //cancels the form; calls reset
   const cancel = () => {
     reset();
     props.onCancel();
   };
-  //function to validate if the form input is not empty
   function validate() {
     if (name === "") {
       setError("Student name cannot be blank");
       return;
     }
+  
     setError("");
     props.onSave(name, interviewer);
   }
-  
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
