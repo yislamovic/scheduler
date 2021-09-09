@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames"
-import "components/Appointment/styles.scss";
+import "../../components/Appointment/styles.scss";
 import Show from "./Show";
 import Empty from "./Empty"
 import Status from "./Status"
@@ -21,7 +21,7 @@ const EDIT = "EDIT";
 const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
-export default function Appointment(props) {
+export const Appointment = (props) => {
     //classname
     const appointmentClass = classnames("appointment"
     );
