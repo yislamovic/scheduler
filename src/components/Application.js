@@ -1,5 +1,5 @@
 
-import "components/Application.scss";
+// import "components/Application.scss";
 import DayList from "components/DayList"
 import React from "react";
 import Appointment from "components/Appointment/index";

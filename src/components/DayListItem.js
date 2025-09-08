@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames"
-import "components/DayListItem.scss";
+// import "components/DayListItem.scss";
 
 //function that determines the spots left
 const formatSpots = (spots) => {

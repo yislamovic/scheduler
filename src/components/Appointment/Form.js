@@ -2,7 +2,7 @@ import React from "react";
 import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 import { useState } from 'react'
-import "components/Appointment/styles.scss";
+// import "components/Appointment/styles.scss";
 
 export default function Form(props) {
   //setStates for name, interviewer, and error

@@ -1,6 +1,6 @@
 import React from "react";
 import classnames from "classnames"
-import "components/Appointment/styles.scss";
+// import "components/Appointment/styles.scss";
 import Show from "./Show";
 import Empty from "./Empty"
 import Status from "./Status"
