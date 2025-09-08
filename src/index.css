@@ -866,157 +866,140 @@ img[src*="imgur.com"] {
   }
 }
 
-/* ===== ENHANCED APPOINTMENT FORM STYLING ===== */
+/* ===== CLEAN FORM STYLING FROM SCRATCH ===== */
 
-/* Dark Create Form - matching reference image */
+/* Main form container - dark theme with forced styling */
 .appointment__card--create {
-  background-color: #2d3748;
-  border: none;
-  border-radius: 0;
-  box-shadow: none;
-  padding: 2rem;
-  margin: 0;
-  display: flex;
-  gap: 2rem;
-  min-height: 120px;
-  color: white;
+  background-color: #2d3748 !important;
+  color: white !important;
+  padding: 24px !important;
+  display: flex !important;
+  gap: 24px !important;
+  min-height: 120px !important;
+  border: none !important;
+  border-radius: 0 !important;
 }
 
+/* Force dark background even on hover */
+.appointment__card--create:hover {
+  background-color: #2d3748 !important;
+  color: white !important;
+}
+
+/* Left section with input and interviewer list */
 .appointment__card-left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.75rem;
-  flex: 1;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
 }
 
+/* Right section with buttons */
 .appointment__card-right {
-  display: flex;
-  align-items: flex-end;
-  padding-left: 1rem;
-  min-width: 120px;
+  display: flex !important;
+  align-items: flex-end !important;
+  min-width: 100px !important;
 }
 
-/* Clean Input Field */
+/* Student name input */
 .appointment__create-input {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 1px solid #4a5568;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 400;
-  font-family: var(--font-family);
-  background-color: #ffffff;
-  transition: all 0.2s ease;
-  color: #374151;
-  margin-bottom: 1rem;
+  width: 100% !important;
+  padding: 12px 16px !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 4px !important;
+  font-size: 16px !important;
+  background-color: white !important;
+  color: #1a202c !important;
+  font-family: inherit !important;
 }
 
 .appointment__create-input:focus {
-  outline: none;
-  border-color: var(--primary-500);
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1), 0 2px 8px rgba(0, 0, 0, 0.05);
-  background-color: var(--gray-50);
-  transform: translateY(-1px);
+  outline: none !important;
+  border-color: #3182ce !important;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1) !important;
 }
 
 .appointment__create-input::placeholder {
-  color: var(--gray-500);
-  font-weight: 400;
+  color: #a0aec0 !important;
 }
 
-/* Form Validation Styling */
+/* Error message */
 .appointment__validation {
-  color: var(--red-600);
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-top: -1rem;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem 0.75rem;
-  background-color: var(--red-50);
-  border: 1px solid var(--red-200);
-  border-radius: 8px;
-  display: none;
+  color: #e53e3e !important;
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+  background-color: rgba(229, 62, 62, 0.1) !important;
+  border-radius: 4px !important;
+  border: 1px solid rgba(229, 62, 62, 0.2) !important;
 }
 
-.appointment__validation:not(:empty) {
-  display: block;
-}
-
-/* Clean Interviewer Section */
-.interviewers__header {
-  font-size: 1rem !important;
-  font-weight: 400 !important;
+/* Interviewer section header */
+.appointment__card--create .interviewers__header {
   color: white !important;
-  margin-bottom: 1rem !important;
-  letter-spacing: normal;
-  position: relative;
+  font-size: 16px !important;
+  font-weight: normal !important;
+  margin: 0 0 16px 0 !important;
 }
 
-/* Remove decorative underline */
-.interviewers__header::after {
-  display: none;
-}
-
-.interviewers__list {
+/* Interviewer list */
+.appointment__card--create .interviewers__list {
   display: flex !important;
-  gap: 1.5rem !important;
+  gap: 16px !important;
   list-style: none !important;
-  padding: 1.5rem 0 !important;
+  padding: 0 !important;
   margin: 0 !important;
-  flex-wrap: wrap;
+  flex-wrap: wrap !important;
 }
 
-/* Enhanced Button Actions */
-.appointment__actions {
-  display: flex !important;
-  gap: 1rem !important;
-  align-items: center;
-  justify-content: flex-end;
-  flex-direction: column;
-}
-
-/* Fix button layout for create form */
+/* Button container - FORCE VISIBILITY */
 .appointment__card--create .appointment__actions {
+  display: flex !important;
   flex-direction: column !important;
-  gap: 0.75rem !important;
-  align-items: stretch !important;
+  gap: 12px !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
-.appointment__actions .button {
-  min-width: 90px !important;
-  padding: 0.875rem 1.75rem !important;
-  font-weight: 600 !important;
-  border-radius: 10px !important;
-  transition: all 0.2s ease !important;
-  font-size: 0.95rem !important;
-  letter-spacing: 0.025em;
-}
-
-.appointment__actions .button--confirm {
-  background: linear-gradient(135deg, var(--green-500), var(--green-600)) !important;
+/* FORCE ALL BUTTONS TO BE VISIBLE */
+.appointment__card--create .appointment__actions .button {
+  padding: 12px 24px !important;
   border: none !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  min-width: 80px !important;
+  text-align: center !important;
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  position: relative !important;
+  z-index: 999 !important;
+}
+
+/* Cancel button - FORCE RED COLOR */
+.appointment__card--create .appointment__actions .button--danger {
+  background-color: #e53e3e !important;
   color: white !important;
-  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2) !important;
+  border: none !important;
 }
 
-.appointment__actions .button--confirm:hover {
-  background: linear-gradient(135deg, var(--green-600), var(--green-700)) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 16px rgba(34, 197, 94, 0.3) !important;
+.appointment__card--create .appointment__actions .button--danger:hover {
+  background-color: #c53030 !important;
+  color: white !important;
 }
 
-.appointment__actions .button--danger {
-  background: transparent !important;
-  border: 2px solid var(--gray-300) !important;
-  color: var(--gray-700) !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02) !important;
+/* Save button - FORCE GREEN COLOR */
+.appointment__card--create .appointment__actions .button--confirm {
+  background-color: #38a169 !important;
+  color: white !important;
+  border: none !important;
 }
 
-.appointment__actions .button--danger:hover {
-  background-color: var(--red-50) !important;
-  border-color: var(--red-300) !important;
-  color: var(--red-700) !important;
-  transform: translateY(-1px) !important;
+.appointment__card--create .appointment__actions .button--confirm:hover {
+  background-color: #2f855a !important;
+  color: white !important;
 }
 
 /* ===== COMPREHENSIVE UX IMPROVEMENTS ===== */
@@ -1063,14 +1046,61 @@ img[src*="imgur.com"] {
 
 /* Show appointment styling to match image */
 .appointment__card--show {
-  background: linear-gradient(135deg, #7dd3fc, #38bdf8);
-  padding: 1rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 80px;
-  color: white;
-  flex: 1;
+  background: linear-gradient(135deg, #7dd3fc, #38bdf8) !important;
+  padding: 1rem 1.5rem !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-height: 80px !important;
+  color: #1e40af !important;
+  flex: 1 !important;
+}
+
+/* Force all text in Show component to be dark blue for contrast */
+.appointment__card--show * {
+  color: #1e40af !important;
+}
+
+.appointment__card--show .text--regular {
+  color: #1e40af !important;
+}
+
+.appointment__card--show .text--light {
+  color: #1e40af !important;
+}
+
+/* SPECIFIC TARGETING FOR H3 AND H4 TAGS */
+h3.text--regular {
+  color: #1e40af !important;
+}
+
+h4.text--light {
+  color: #1e40af !important;
+}
+
+.appointment__card--show h3.text--regular {
+  color: #1e40af !important;
+}
+
+.appointment__card--show h4.text--light {
+  color: #1e40af !important;
+}
+
+/* ULTIMATE OVERRIDE - TARGET EVERY POSSIBLE COMBINATION */
+.appointment__card--show .interviewer h3 {
+  color: #1e40af !important;
+}
+
+.appointment__card--show .interviewer h4 {
+  color: #1e40af !important;
+}
+
+.appointment__card--show section.interviewer h3.text--regular {
+  color: #1e40af !important;
+}
+
+.appointment__card--show section.interviewer h4.text--light {
+  color: #1e40af !important;
 }
 
 .appointment__card-left {
@@ -1083,26 +1113,26 @@ img[src*="imgur.com"] {
 .appointment__card--show h2 {
   font-size: 1.25rem;
   font-weight: 400;
-  color: white;
+  color: #1e40af !important;
   margin: 0 0 0.5rem 0;
   letter-spacing: normal;
 }
 
-/* Interviewer display matching the image */
+/* Interviewer display - DARK BLUE FOR VISIBILITY */
 .interviewer h4 {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.8);
-  margin: 0 0 0.25rem 0;
-  text-transform: none;
-  letter-spacing: normal;
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
+  color: #1e40af !important;
+  margin: 0 0 0.25rem 0 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
 }
 
 .interviewer h3 {
-  font-size: 0.95rem;
-  font-weight: 400;
-  color: white;
-  margin: 0;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  color: #1e40af !important;
+  margin: 0 !important;
 }
 
 /* Enhanced action buttons in show mode */
@@ -1133,13 +1163,13 @@ img[src*="imgur.com"] {
 }
 
 .text--light {
-  font-weight: 500;
-  color: var(--gray-600);
+  font-weight: 500 !important;
+  color: #1e40af !important;
 }
 
 .text--regular {
-  font-weight: 500;
-  color: var(--gray-800);
+  font-weight: 500 !important;
+  color: #1e40af !important;
 }
 
 /* Better focus states for accessibility */
@@ -1226,61 +1256,34 @@ button:focus,
   margin-top: 0.25rem;
 }
 
-/* ===== COMPLETE BUTTON REWORK FOR FORM ===== */
+/* ===== ULTIMATE FIX FOR H3/H4 VISIBILITY - HIGHEST PRIORITY ===== */
+/* This must be at the end of the file to have highest priority */
 
-/* Form buttons container */
-.appointment__card--create .appointment__actions {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 0.75rem !important;
-  align-items: stretch !important;
-  width: 100% !important;
-}
-
-/* All form buttons */
-.appointment__card--create .appointment__actions .button {
-  min-width: 80px !important;
-  padding: 0.75rem 1.5rem !important;
-  font-weight: 600 !important;
-  border-radius: 6px !important;
-  transition: all 0.2s ease !important;
-  font-size: 0.875rem !important;
-  text-align: center !important;
-  cursor: pointer !important;
-  border: none !important;
-  display: block !important;
-}
-
-/* Save Button - Green matching reference */
-.appointment__card--create .appointment__actions .button--confirm {
-  background: #22c55e !important;
-  color: white !important;
-  border: none !important;
-  box-shadow: none !important;
-  display: block !important;
+/* Force DARK BLUE text for light blue background - proper contrast */
+main.appointment__card.appointment__card--show section.appointment__card-left section.interviewer h4.text--light {
+  color: #1e40af !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
 
-.appointment__card--create .appointment__actions .button--confirm:hover {
-  background: #16a34a !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3) !important;
-}
-
-/* Cancel Button - Red matching reference */
-.appointment__card--create .appointment__actions .button--danger {
-  background: #ef4444 !important;
-  border: none !important;
-  color: white !important;
-  box-shadow: none !important;
-  display: block !important;
+main.appointment__card.appointment__card--show section.appointment__card-left section.interviewer h3.text--regular {
+  color: #1e40af !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
 
-.appointment__card--create .appointment__actions .button--danger:hover {
-  background: #dc2626 !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3) !important;
+/* Backup rules with even more specificity */
+.appointment__card--show .appointment__card-left .interviewer h4 {
+  color: #1e40af !important;
 }
+
+.appointment__card--show .appointment__card-left .interviewer h3 {
+  color: #1e40af !important;
+}
+
+/* Nuclear option - override all possible combinations */
+[class*="appointment__card--show"] [class*="interviewer"] h3,
+[class*="appointment__card--show"] [class*="interviewer"] h4 {
+  color: #1e40af !important;
+}
+
