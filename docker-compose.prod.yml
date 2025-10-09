@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # Express API server
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: scheduler-api
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      - NODE_ENV=production
+      - PORT=8001
+    command: npm run start:server
+    networks:
+      - scheduler-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:8001/api/days', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # React production build served by simple http server
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: scheduler-app
+    restart: unless-stopped
+    ports:
+      - "80:8000"
+    environment:
+      - NODE_ENV=production
+      - PORT=8000
+      - NODE_OPTIONS=--openssl-legacy-provider
+    command: sh -c "npm run build && npx serve -s build -l 8000"
+    depends_on:
+      - api
+    networks:
+      - scheduler-network
+
+networks:
+  scheduler-network:
+    driver: bridge

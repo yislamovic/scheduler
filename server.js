@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
 const PORT = 8001;
@@ -14,6 +15,11 @@ app.use((req, res, next) => {
   console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
   next();
 });
+
+// Serve static files from React build (in production)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'build')));
+}
 
 // Mock data
 let days = [
@@ -151,7 +157,7 @@ app.put('/api/appointments/:id', (req, res) => {
 
 app.delete('/api/appointments/:id', (req, res) => {
   const { id } = req.params;
-  
+
   if (appointments[id]) {
     appointments[id].interview = null;
     updateSpots();
@@ -160,6 +166,13 @@ app.delete('/api/appointments/:id', (req, res) => {
     res.status(404).json({ error: 'Appointment not found' });
   }
 });
+
+// Serve React app for all other routes (in production)
+if (process.env.NODE_ENV === 'production') {
+  app.get(/^(?!\/api).*$/, (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
+}
 
 // Start server
 app.listen(PORT, () => {
