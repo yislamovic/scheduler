@@ -30,7 +30,7 @@ services:
     container_name: scheduler-app
     restart: unless-stopped
     ports:
-      - "80:8000"
+      - "3003:8000"
     environment:
       - NODE_ENV=production
       - PORT=8000
