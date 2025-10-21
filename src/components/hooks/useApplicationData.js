@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8001";
+
 export default function useApplicationData() {
   //useState that manages data
   const [state, setState] = useState({
@@ -16,13 +19,13 @@ export default function useApplicationData() {
       try {
         //promise for all get requests wrapped in a try/Catch
         const [days, appointments, interviewers] = await Promise.all([
-          axios.get(`http://localhost:8001/api/days`).then((response) => {
+          axios.get(`${API_BASE_URL}/api/days`).then((response) => {
             return response.data
           }),
-          axios.get(`http://localhost:8001/api/appointments`).then((response) => {
+          axios.get(`${API_BASE_URL}/api/appointments`).then((response) => {
             return response.data
           }),
-          axios.get(`http://localhost:8001/api/interviewers`).then((response) => {
+          axios.get(`${API_BASE_URL}/api/interviewers`).then((response) => {
             return response.data
           })
         ]);
@@ -64,7 +67,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
     const days = updateSpots(state, appointments);
-    return (axios.put(`http://localhost:8001/api/appointments/${id}`, {
+    return (axios.put(`${API_BASE_URL}/api/appointments/${id}`, {
       interview
     })
       //when the put request is succesful; update appointments and spots with setState
@@ -87,7 +90,7 @@ export default function useApplicationData() {
     };
     const days = updateSpots(state, appointments);
     //delete request instead of put..
-    return (axios.delete(`http://localhost:8001/api/appointments/${id}`)
+    return (axios.delete(`${API_BASE_URL}/api/appointments/${id}`)
       .then(() => {
         setState({
           ...state,
@@ -106,7 +109,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
     //put request to change data in server
-    return (axios.put(`http://localhost:8001/api/appointments/${id}`, { interview })
+    return (axios.put(`${API_BASE_URL}/api/appointments/${id}`, { interview })
       .then(() => {
         setState({
           ...state,
