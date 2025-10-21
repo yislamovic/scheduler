@@ -5,6 +5,7 @@ import React from "react";
 import Appointment from "components/Appointment/index";
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors"
 import useApplicationData from "./hooks/useApplicationData"
+import SessionBadge from "components/SessionBadge"
 
 export default function Application(props) {
   //state and functions from useApplicationData
@@ -63,6 +64,7 @@ export default function Application(props) {
         {timeSlots}
         <Appointment key="last" time="5pm" />
       </section>
+      <SessionBadge sessionId={state.sessionId} />
     </main>
   );
 }

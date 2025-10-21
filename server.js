@@ -44,62 +44,62 @@ const BASE_DATA = {
       name: "Monday",
       appointments: [1, 2, 3, 4, 5],
       interviewers: [1, 2],
-      spots: 2
+      spots: 1
     },
     {
       id: 2,
       name: "Tuesday",
       appointments: [6, 7, 8, 9, 10],
       interviewers: [3, 4],
-      spots: 1
+      spots: 2
     },
     {
       id: 3,
       name: "Wednesday",
       appointments: [11, 12, 13, 14, 15],
       interviewers: [1, 3, 5],
-      spots: 4
+      spots: 3
     },
     {
       id: 4,
       name: "Thursday",
       appointments: [16, 17, 18, 19, 20],
       interviewers: [2, 5],
-      spots: 3
+      spots: 2
     },
     {
       id: 5,
       name: "Friday",
       appointments: [21, 22, 23, 24, 25],
       interviewers: [1, 4, 5],
-      spots: 2
+      spots: 3
     }
   ],
   appointments: {
-    "1": { id: 1, time: "12pm", interview: null },
-    "2": { id: 2, time: "1pm", interview: null },
+    "1": { id: 1, time: "12pm", interview: { student: "Archie Cohen", interviewer: 2 } },
+    "2": { id: 2, time: "1pm", interview: { student: "Leopold Silvers", interviewer: 1 } },
     "3": { id: 3, time: "2pm", interview: { student: "John Doe", interviewer: 1 } },
     "4": { id: 4, time: "3pm", interview: null },
-    "5": { id: 5, time: "4pm", interview: null },
-    "6": { id: 6, time: "12pm", interview: null },
+    "5": { id: 5, time: "4pm", interview: { student: "Maria Garcia", interviewer: 2 } },
+    "6": { id: 6, time: "12pm", interview: { student: "Richard Wong", interviewer: 4 } },
     "7": { id: 7, time: "1pm", interview: { student: "Jane Smith", interviewer: 3 } },
     "8": { id: 8, time: "2pm", interview: null },
-    "9": { id: 9, time: "3pm", interview: null },
+    "9": { id: 9, time: "3pm", interview: { student: "Alex Kumar", interviewer: 4 } },
     "10": { id: 10, time: "4pm", interview: null },
     "11": { id: 11, time: "12pm", interview: null },
-    "12": { id: 12, time: "1pm", interview: null },
+    "12": { id: 12, time: "1pm", interview: { student: "Sarah Lee", interviewer: 5 } },
     "13": { id: 13, time: "2pm", interview: null },
     "14": { id: 14, time: "3pm", interview: null },
-    "15": { id: 15, time: "4pm", interview: null },
-    "16": { id: 16, time: "12pm", interview: null },
+    "15": { id: 15, time: "4pm", interview: { student: "Tom Wilson", interviewer: 3 } },
+    "16": { id: 16, time: "12pm", interview: { student: "Nina Patel", interviewer: 5 } },
     "17": { id: 17, time: "1pm", interview: null },
-    "18": { id: 18, time: "2pm", interview: null },
+    "18": { id: 18, time: "2pm", interview: { student: "Mike Johnson", interviewer: 2 } },
     "19": { id: 19, time: "3pm", interview: null },
     "20": { id: 20, time: "4pm", interview: null },
     "21": { id: 21, time: "12pm", interview: null },
-    "22": { id: 22, time: "1pm", interview: null },
+    "22": { id: 22, time: "1pm", interview: { student: "Emily Chen", interviewer: 1 } },
     "23": { id: 23, time: "2pm", interview: null },
-    "24": { id: 24, time: "3pm", interview: null },
+    "24": { id: 24, time: "3pm", interview: { student: "David Park", interviewer: 4 } },
     "25": { id: 25, time: "4pm", interview: null }
   },
   interviewers: {
