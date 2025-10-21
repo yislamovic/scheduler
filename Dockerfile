@@ -9,6 +9,9 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
+# Copy environment files (ADDED THIS LINE)
+COPY .env* ./
+
 # Install all dependencies (needed for build)
 RUN npm install
 
